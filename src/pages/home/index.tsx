@@ -6,7 +6,7 @@ import { useQuery } from 'styles/breakpoints';
 import { theme } from 'styles/theme';
 import { ThemeProvider } from 'styled-components/macro';
 
-type People = 'Viktorija' | 'Vidmis' | 'Martyna' | 'Nojus';
+type People = 'Viktorija' | 'Vidmis' | 'Martyna' | 'Nojus'; //NOTE: Type might be not only strings
 
 enum Foods {
 	GRYBAI = 'grybukai',
@@ -15,6 +15,14 @@ enum Foods {
 	SALDUMYNAI = 'sokoladai',
 }
 
+//NOTE: if we do not pass any value for enum, then it automatically will add a number value starting from 0
+// enum FoodsEnum {
+// 	GRYBAI,
+// 	BURGERIUKAI,
+// 	CEPAI,
+// 	SALDUMYNAI,
+// }
+
 interface Foodies {
 	id: number;
 	name: People;
@@ -22,7 +30,7 @@ interface Foodies {
 }
 
 interface FoodiesExt extends Foodies {
-	hateFood?: string;
+	hateFood?: string; //NOTE: ? means optional
 }
 
 const FOODS: FoodiesExt[] = [
@@ -49,16 +57,17 @@ const FOODS: FoodiesExt[] = [
 ];
 
 const Home: React.FC = () => {
+	//NOTE: React.FC means functional React component
 	const a = true;
-	const [data, setData] = useState(0);
+	const [data, setData] = useState(0); //NOTE: TS automatically adds a type to initial value
 
-	const b = [10];
+	const b = [10]; //NOTE: TS automatically adds a type to initial value
 	const c = [10];
 
 	console.log(Foods.BURGERIUKAI);
 
-	const arrayjus2: Array<string | number> = ['1', 2];
-	const arrayjus: (string | number)[] = ['2', '1', 3, 2];
+	const arrayjus2: Array<string | number> = ['1', 2]; //NOTE: Generic type
+	const arrayjus: (string | number)[] = ['2', '1', 3, 2]; //NOTE: primitive type
 
 	const { isMobile } = useQuery();
 
