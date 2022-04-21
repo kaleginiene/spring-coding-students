@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-import { theme } from '../../styles/breakpoints';
+import { theme } from '../../styles/theme';
 
 export const TextBase = styled.p`
 	margin: ${({ margin }) => margin || ''};

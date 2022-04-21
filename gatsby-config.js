@@ -31,5 +31,11 @@ module.exports = {
 				path: `${__dirname}/src/assets/images`,
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-resolve-src',
+			options: {
+				srcPath: path.resolve(__dirname, 'src'),
+			},
+		},
 	],
 };
