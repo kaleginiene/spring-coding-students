@@ -8,7 +8,7 @@ import {
 	space,
 	SpaceProps,
 	textAlign,
-	TypographyProps as TextProps,
+	TypographyProps,
 	textStyle,
 	typography,
 } from 'styled-system';
@@ -19,7 +19,7 @@ import { applyTextType } from './TypographyHelpers';
 
 export type TextType = 'h1' | 'h2' | 'h3' | 'body16' | 'caption12' | 'span';
 
-export enum TextTypeComponentMap {
+export enum TextTag {
 	'h1' = 'h1',
 	'h2' = 'h2',
 	'h3' = 'h3',
@@ -39,7 +39,7 @@ const typographyProperties = compose(
 	space
 );
 
-export interface TypographyProps extends SpaceProps<Theme>, TextProps<Theme> {
+export interface Props extends SpaceProps<Theme>, TypographyProps<Theme> {
 	color?: Colors;
 	type?: TextType;
 	textTransform?: Property.TextTransform;
@@ -48,12 +48,12 @@ export interface TypographyProps extends SpaceProps<Theme>, TextProps<Theme> {
 	children: ReactNode;
 }
 
-export const Typography: React.FC<TypographyProps> = ({
+export const Typography: React.FC<Props> = ({
 	type = 'body16',
 	children,
 	...props
 }) => {
-	const as = TextTypeComponentMap[type] as AsAttributeType;
+	const as = TextTag[type] as AsAttributeType;
 
 	return (
 		<Text type={type} as={as} {...props}>
@@ -62,7 +62,7 @@ export const Typography: React.FC<TypographyProps> = ({
 	);
 };
 
-const Text = styled.p<TypographyProps>`
+const Text = styled.p<Props>`
 	padding: 0;
 	box-sizing: border-box;
 	${({ type, theme }) =>
