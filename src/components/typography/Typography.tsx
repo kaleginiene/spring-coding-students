@@ -2,10 +2,7 @@ import { Property } from 'csstype';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components/macro';
 import {
-	border,
-	BorderProps,
 	compose,
-	DisplayProps,
 	fontWeight,
 	lineHeight,
 	space,
@@ -31,7 +28,7 @@ export enum TextTypeComponentMap {
 	'caption12' = 'p',
 }
 
-type AsPropType = string | React.ComponentType;
+type AsAttributeType = string | React.ComponentType;
 
 const typographyProperties = compose(
 	textAlign,
@@ -39,15 +36,10 @@ const typographyProperties = compose(
 	lineHeight,
 	textStyle,
 	typography,
-	space,
-	border
+	space
 );
 
-export interface TypographyProps
-	extends DisplayProps<Theme>,
-		SpaceProps<Theme>,
-		BorderProps<Theme>,
-		TextProps<Theme> {
+export interface TypographyProps extends SpaceProps<Theme>, TextProps<Theme> {
 	color?: Colors;
 	type?: TextType;
 	textTransform?: Property.TextTransform;
@@ -61,7 +53,7 @@ export const Typography: React.FC<TypographyProps> = ({
 	children,
 	...props
 }) => {
-	const as = TextTypeComponentMap[type] as AsPropType;
+	const as = TextTypeComponentMap[type] as AsAttributeType;
 
 	return (
 		<Text type={type} as={as} {...props}>
