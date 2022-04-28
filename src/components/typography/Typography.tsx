@@ -64,8 +64,10 @@ export const Typography: React.FC<TextProps> = ({
 
 const Text = styled.p<TextProps>`
 	padding: 0;
+
 	${({ type, theme }) =>
 		type && applyTextType(type as TextType, theme as Theme)};
+
 	color: ${({ theme, color }) =>
 		color ? theme.colors[color] : theme.colors.white};
 

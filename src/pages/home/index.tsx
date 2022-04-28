@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
-import { Box, SectionWrapper } from 'components';
+import { Box, Image, SectionWrapper, Typography } from 'components';
 import { useQuery } from 'styles/breakpoints';
 import { theme } from 'styles/theme';
-import { ThemeProvider } from 'styled-components/macro';
+import { StaticImage } from 'gatsby-plugin-image';
 
 type People = 'Viktorija' | 'Vidmis' | 'Martyna' | 'Nojus'; //NOTE: Type might be not only strings
 
@@ -81,11 +81,24 @@ const Home: React.FC = () => {
 		//NOTE: THIS ISNT A GOOD PRACTICE. WE WILL CREATE A FILE, FOR PROVIDERS.
 		<SectionWrapper>
 			<Box
-				backgroundColor={{ _: 'primary', ltablet: 'accent' }}
+				backgroundColor={{ _: 'secondary', ltablet: 'primary' }}
 				minHeight={isMobile ? '50%' : '100vh'}
 				minWidth='100vw'
 			>
-				FOOOOOD
+				<Typography type='h1' textAlign='center'>
+					fooood
+				</Typography>
+				<Image maxHeight='6.25rem' src='gatsbyImg' alt='gatsby' />
+				<StaticImage
+					src='../../assets/images/students.png'
+					alt='studenciukai'
+					placeholder='tracedSVG'
+					draggable='false'
+					style={{
+						maxWidth: '500px',
+						margin: '0 auto',
+					}}
+				/>
 			</Box>
 		</SectionWrapper>
 	);
