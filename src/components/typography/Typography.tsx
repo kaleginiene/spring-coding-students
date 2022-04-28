@@ -39,7 +39,7 @@ const typographyProperties = compose(
 	space
 );
 
-export interface Props extends SpaceProps<Theme>, TypographyProps<Theme> {
+export interface TextProps extends SpaceProps<Theme>, TypographyProps<Theme> {
 	color?: Colors;
 	type?: TextType;
 	textTransform?: Property.TextTransform;
@@ -48,7 +48,7 @@ export interface Props extends SpaceProps<Theme>, TypographyProps<Theme> {
 	children: ReactNode;
 }
 
-export const Typography: React.FC<Props> = ({
+export const Typography: React.FC<TextProps> = ({
 	type = 'body16',
 	children,
 	...props
@@ -56,15 +56,14 @@ export const Typography: React.FC<Props> = ({
 	const as = TextTag[type] as AsAttributeType;
 
 	return (
-		<Text type={type} as={as} {...props}>
+		<Text as={as} type={type} {...props}>
 			{children}
 		</Text>
 	);
 };
 
-const Text = styled.p<Props>`
+const Text = styled.p<TextProps>`
 	padding: 0;
-	box-sizing: border-box;
 	${({ type, theme }) =>
 		type && applyTextType(type as TextType, theme as Theme)};
 	color: ${({ theme, color }) =>
