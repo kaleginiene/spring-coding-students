@@ -71,19 +71,23 @@ const Home: React.FC = () => {
 
 	const { isMobile } = useQuery();
 
+	// let betkas: any;
+	// let belenkas: unknown;
+
+	// console.log(betkas.includes('a'));
+	// console.log(belenkas.includes('a'));
+
 	return (
 		//NOTE: THIS ISNT A GOOD PRACTICE. WE WILL CREATE A FILE, FOR PROVIDERS.
-		<ThemeProvider theme={theme}>
-			<SectionWrapper>
-				<Box
-					backgroundColor='primary'
-					minHeight={isMobile ? '50%' : '100vh'}
-					minWidth='100vw'
-				>
-					FOOOOOD
-				</Box>
-			</SectionWrapper>
-		</ThemeProvider>
+		<SectionWrapper>
+			<Box
+				backgroundColor={{ _: 'primary', ltablet: 'accent' }}
+				minHeight={isMobile ? '50%' : '100vh'}
+				minWidth='100vw'
+			>
+				FOOOOOD
+			</Box>
+		</SectionWrapper>
 	);
 };
 

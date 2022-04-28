@@ -4,7 +4,7 @@ import React from 'react';
 
 import Home from './home';
 
-const Landing = () => {
+const Landing = (props) => {
 	return <Home />;
 };
 
