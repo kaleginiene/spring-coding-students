@@ -1,3 +1,5 @@
+//THIS FILE IS NOT NECESSARY WHEN USING TOOLKIT
+
 import { SET_QUIZ_ANSWERS, SET_USER_DATA } from './constants';
 import { Foodies } from 'state/types';
 

@@ -3,9 +3,13 @@ import { useSelector } from 'react-redux';
 
 import { Box, SectionWrapper, Typography } from 'components';
 import { AppState } from 'state/types';
+import { selectUserData } from 'state/selectors';
 
 export const ResultState: React.FC = () => {
-	const userData = useSelector((state: AppState) => state.user);
+	// const userData = useSelector((state: AppState) => state.user);
+
+	const userData = useSelector(selectUserData);
+
 	console.log(userData);
 	return (
 		<SectionWrapper>

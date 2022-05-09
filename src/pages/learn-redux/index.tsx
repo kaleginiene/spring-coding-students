@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, DefaultButton, SectionWrapper, Typography } from 'components';
 import { theme } from 'styles/theme';
 import { AppState, Foodies, Foods } from 'state/types';
-import store from 'state/store';
+// import store from 'state/store';
 import { SET_USER_DATA } from 'state/constants';
 import { ResultState } from './sections/ResultState';
+import { setUserData } from 'state/slice';
+import { selectUserData } from 'state/selectors';
 
 //should be added to constants, but on learning purposes left here
 const FOODS: Foodies[] = [
@@ -34,7 +36,8 @@ const FOODS: Foodies[] = [
 
 const LearnRedux: React.FC = () => {
 	const dispatch = useDispatch();
-	const userData = useSelector((state: AppState) => state.user);
+	// const userData = useSelector((state: AppState) => state.user);
+	const userData = useSelector(selectUserData);
 
 	console.log(userData);
 
@@ -44,11 +47,16 @@ const LearnRedux: React.FC = () => {
 		food: null as unknown as Foods,
 	});
 
-	const handleStateButton = () =>
-		dispatch({
-			type: SET_USER_DATA,
-			payload: selectedUser,
-		});
+	//REDUX TOOLKI DISPATCH
+
+	const handleStateButton = () => dispatch(setUserData(selectedUser));
+
+	//OLD-FASHIONED REDUX
+	// const handleStateButton = () =>
+	// 	dispatch({
+	// 		type: SET_USER_DATA,
+	// 		payload: selectedUser,
+	// 	});
 
 	return (
 		<>
