@@ -1,3 +1,6 @@
+//button
+export * from './buttons/DefaultButton';
+
 //wrappers
 export * from './wrappers/SectionWrapper';
 export * from './wrappers/Box';

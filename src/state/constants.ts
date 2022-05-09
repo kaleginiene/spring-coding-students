@@ -1,0 +1,2 @@
+export const SET_USER_DATA = 'SET_USER_DATA';
+export const SET_QUIZ_ANSWERS = 'SET_QUIZ_ANSWERS';
