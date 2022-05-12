@@ -99,6 +99,13 @@ const Home: React.FC = () => {
 						margin: '0 auto',
 					}}
 				/>
+				{FOODS.map(({ id, name, food }) => (
+					<Box key={id}>
+						<Typography color='accent'>
+							{name} loves {food}
+						</Typography>
+					</Box>
+				))}
 			</Box>
 		</SectionWrapper>
 	);

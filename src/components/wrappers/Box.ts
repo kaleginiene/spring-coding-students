@@ -48,10 +48,13 @@ interface Styles<T>
 		LayoutProps<T>,
 		ShadowProps<T>,
 		TextAlignProps<T>,
-		SpaceProps<T> {}
+		SpaceProps<T> {
+	isCursorPointer?: boolean;
+}
 
 export const Box = styled.div<Styles<Theme>>`
 	&& {
 		${boxProps};
 	}
+	cursor: ${({ isCursorPointer }) => (isCursorPointer ? 'pointer' : '')};
 `;
