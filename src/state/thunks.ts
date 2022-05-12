@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { UserPostData } from './types';
 
+//place url into .env file in your projects
 const url = 'https://reqres.in/api/users';
 
 const fetchUsersPrefix = 'user/GET_USERS';

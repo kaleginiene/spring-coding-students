@@ -3,6 +3,8 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { combineReducers, CombinedState, AnyAction } from 'redux';
 import userSlice from './slice';
 import { UserState } from './types';
+import createSagaMiddleware from '@redux-saga/core';
+import rootSaga from './rootSaga';
 
 export interface RootState {
 	user: UserState;
@@ -18,10 +20,14 @@ const combinedReducer = combineReducers<CombinedState<RootState>>({
 export const rootReducer = (state: any, action: AnyAction) =>
 	combinedReducer(state, action);
 
+const sagaMiddleware = createSagaMiddleware();
+
 export const store = configureStore({
 	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+	middleware: [sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
 
 //OLD-FASHIONED REDUX
 // import { createStore, combineReducers } from 'redux';

@@ -34,30 +34,33 @@ const userSlice = createSlice({
 				...actions.payload,
 			};
 		},
+		setUsers: (state, actions: PayloadAction<UserState['users']>) => {
+			state.users = actions.payload;
+		},
 	},
-	extraReducers: (builder) => {
-		builder.addCase(
-			fetchUsers.fulfilled,
-			(state, action: PayloadAction<UserState['users']>) => {
-				if (action.payload) {
-					state.users = action.payload;
-					state.status = 'success';
-				}
-			}
-		);
-		builder.addCase(fetchUsers.pending, (state) => {
-			state.status = 'loading';
-		});
-		builder.addCase(fetchUsers.rejected, (state) => {
-			state.status = 'error';
-		});
-		builder.addCase(postUser.fulfilled, (state) => {
-			state.status = 'success';
-		});
-	},
+	// extraReducers: (builder) => {
+	// 	builder.addCase(
+	// 		fetchUsers.fulfilled,
+	// 		(state, action: PayloadAction<UserState['users']>) => {
+	// 			if (action.payload) {
+	// 				state.users = action.payload;
+	// 				state.status = 'success';
+	// 			}
+	// 		}
+	// 	);
+	// 	builder.addCase(fetchUsers.pending, (state) => {
+	// 		state.status = 'loading';
+	// 	});
+	// 	builder.addCase(fetchUsers.rejected, (state) => {
+	// 		state.status = 'error';
+	// 	});
+	// 	builder.addCase(postUser.fulfilled, (state) => {
+	// 		state.status = 'success';
+	// 	});
+	// },
 });
 
-export const { setUserData, setQuizAnswers } = userSlice.actions;
+export const { setUsers, setUserData, setQuizAnswers } = userSlice.actions;
 export default userSlice;
 
 //OLD-FASHIONED REDUCER

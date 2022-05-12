@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, postUser } from 'state/thunks';
 import { selectUsers } from 'state/selectors';
 import { UserPostData } from 'state/types';
+import { fetchUsersAction } from 'state/sagasActions';
 
 const MiddleWare: React.FC = () => {
 	//ASYNC example
@@ -39,18 +40,37 @@ const MiddleWare: React.FC = () => {
 	// console.log(data);
 
 	//TODO: fix type problem
+	// useEffect(() => {
+	// 	dispatch(fetchUsers());
+	// }, []);
+
+	// const student: UserPostData = {
+	// 	name: 'studentas',
+	// 	job: 'dev',
+	// };
+
+	// const handlePostButton = (user: UserPostData) => {
+	// 	dispatch(postUser(user));
+	// };
+
+	//GENERATOR FUNCTION
+	// function* generatorExample() {
+	// 	yield 'pirmas';
+	// 	yield 'antras';
+	// 	yield 'trecias';
+	// }
+
+	// const generatorValue = generatorExample();
+	// console.log(generatorValue);
+	// console.log(generatorValue.next());
+	// console.log(generatorValue.next());
+	// console.log(generatorValue.next());
+	// console.log(generatorValue.next());
+
+	//SAGAS DISPATCHING
 	useEffect(() => {
-		dispatch(fetchUsers());
+		dispatch(fetchUsersAction());
 	}, []);
-
-	const student: UserPostData = {
-		name: 'studentas',
-		job: 'dev',
-	};
-
-	const handlePostButton = (user: UserPostData) => {
-		dispatch(postUser(user));
-	};
 
 	return (
 		<SectionWrapper backgroundColor='primary' minHeight='100vh'>
@@ -59,9 +79,9 @@ const MiddleWare: React.FC = () => {
 					Middleware paskaita
 				</Typography>
 
-				<DefaultButton onClick={() => handlePostButton(student)}>
+				{/* <DefaultButton onClick={() => handlePostButton(student)}>
 					Add user to api
-				</DefaultButton>
+				</DefaultButton> */}
 			</Box>
 		</SectionWrapper>
 	);
