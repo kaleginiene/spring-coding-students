@@ -1,11 +1,12 @@
 //REDUX TOOLKIT SLICE
 //!!!!!!!!!!!!!!!!TODO: RENAME THIS FILE TO slice.ts!!!!!!!!!!!!!!!!!!!!!!!!!
-import { Foods, QuizAnswers } from './types';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Foods, QuizAnswers, UserState } from './types';
+import { createSlice, PayloadAction, AnyAction } from '@reduxjs/toolkit';
 
 import { Foodies } from './types';
+import { fetchUsers, postUser } from './thunks';
 
-const initialState = {
+const initialState: UserState = {
 	user_data: {
 		id: null as unknown as number,
 		name: '',
@@ -16,6 +17,8 @@ const initialState = {
 		question_key2: '',
 		question_key3: null as unknown as number,
 	},
+	users: [],
+	status: 'idle',
 };
 
 const userSlice = createSlice({
@@ -31,6 +34,26 @@ const userSlice = createSlice({
 				...actions.payload,
 			};
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(
+			fetchUsers.fulfilled,
+			(state, action: PayloadAction<UserState['users']>) => {
+				if (action.payload) {
+					state.users = action.payload;
+					state.status = 'success';
+				}
+			}
+		);
+		builder.addCase(fetchUsers.pending, (state) => {
+			state.status = 'loading';
+		});
+		builder.addCase(fetchUsers.rejected, (state) => {
+			state.status = 'error';
+		});
+		builder.addCase(postUser.fulfilled, (state) => {
+			state.status = 'success';
+		});
 	},
 });
 

@@ -5,7 +5,7 @@ import { Box, DefaultButton, SectionWrapper, Typography } from 'components';
 import { theme } from 'styles/theme';
 import { AppState, Foodies, Foods } from 'state/types';
 // import store from 'state/store';
-import { SET_USER_DATA } from 'state/constants';
+// import { SET_USER_DATA } from 'state/constants';
 import { ResultState } from './sections/ResultState';
 import { setUserData } from 'state/slice';
 import { selectUserData } from 'state/selectors';
@@ -46,7 +46,6 @@ const LearnRedux: React.FC = () => {
 		name: '',
 		food: null as unknown as Foods,
 	});
-
 	//REDUX TOOLKI DISPATCH
 
 	const handleStateButton = () => dispatch(setUserData(selectedUser));

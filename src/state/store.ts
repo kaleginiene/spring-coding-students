@@ -1,5 +1,5 @@
 //REDUX TOOLKIT
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { combineReducers, CombinedState, AnyAction } from 'redux';
 import userSlice from './slice';
 import { UserState } from './types';
@@ -20,6 +20,7 @@ export const rootReducer = (state: any, action: AnyAction) =>
 
 export const store = configureStore({
 	reducer: rootReducer,
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 //OLD-FASHIONED REDUX
