@@ -1,10 +1,11 @@
 import { Box, DefaultButton, SectionWrapper, Typography } from 'components';
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { fetchUsers, postUser } from 'state/thunks';
 import { selectUsers } from 'state/selectors';
 import { UserPostData } from 'state/types';
+import { useAppDispatch } from 'state/store';
 
 const MiddleWare: React.FC = () => {
 	//ASYNC example
@@ -19,7 +20,7 @@ const MiddleWare: React.FC = () => {
 	// console.log(b);
 	// a = 'asdasd';
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const users = useSelector(selectUsers);
 
 	console.log(users);
@@ -39,6 +40,7 @@ const MiddleWare: React.FC = () => {
 	// console.log(data);
 
 	//TODO: fix type problem
+
 	useEffect(() => {
 		dispatch(fetchUsers());
 	}, []);
@@ -49,7 +51,7 @@ const MiddleWare: React.FC = () => {
 	};
 
 	const handlePostButton = (user: UserPostData) => {
-		dispatch(postUser(user));
+		dispatch(postUser({ userData: user }));
 	};
 
 	return (

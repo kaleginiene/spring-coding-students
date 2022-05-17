@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Box, DefaultButton, SectionWrapper, Typography } from 'components';
 import { theme } from 'styles/theme';
@@ -9,6 +9,7 @@ import { AppState, Foodies, Foods } from 'state/types';
 import { ResultState } from './sections/ResultState';
 import { setUserData } from 'state/slice';
 import { selectUserData } from 'state/selectors';
+import { useAppDispatch } from 'state/store';
 
 //should be added to constants, but on learning purposes left here
 const FOODS: Foodies[] = [
@@ -35,7 +36,7 @@ const FOODS: Foodies[] = [
 ];
 
 const LearnRedux: React.FC = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	// const userData = useSelector((state: AppState) => state.user);
 	const userData = useSelector(selectUserData);
 
