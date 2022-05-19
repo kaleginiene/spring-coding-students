@@ -15,7 +15,7 @@ export interface RootState {
 
 //reducers
 const combinedReducer = combineReducers<CombinedState<RootState>>({
-	user: userSlice.reducer,
+	user: userSlice,
 	//funnel: funnelReducer
 	//layouts: layoutsReducer
 });

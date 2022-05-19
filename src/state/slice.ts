@@ -6,7 +6,7 @@ import { createSlice, PayloadAction, AnyAction } from '@reduxjs/toolkit';
 import { Foodies } from './types';
 import { fetchUsers, postUser } from './thunks';
 
-const initialState: UserState = {
+export const initialState: UserState = {
 	user_data: {
 		id: null as unknown as number,
 		name: '',
@@ -26,7 +26,9 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		setUserData: (state, actions: PayloadAction<Foodies>) => {
-			state.user_data = actions.payload;
+			if (actions.payload) {
+				state.user_data = actions.payload;
+			}
 		},
 		setQuizAnswers: (state, actions: PayloadAction<Partial<QuizAnswers>>) => {
 			state.quiz_answers = {
@@ -58,7 +60,7 @@ const userSlice = createSlice({
 });
 
 export const { setUserData, setQuizAnswers } = userSlice.actions;
-export default userSlice;
+export default userSlice.reducer;
 
 //OLD-FASHIONED REDUCER
 // import { Foods } from './types';
