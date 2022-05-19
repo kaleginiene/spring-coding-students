@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, postUser } from 'state/thunks';
 import { selectUsers } from 'state/selectors';
 import { UserPostData } from 'state/types';
-import { fetchUsersAction } from 'state/sagasActions';
+import { fetchUsersAction, postUserDataAction } from 'state/sagasActions';
 
 const MiddleWare: React.FC = () => {
 	//ASYNC example
@@ -72,6 +72,15 @@ const MiddleWare: React.FC = () => {
 		dispatch(fetchUsersAction());
 	}, []);
 
+	const userToPost: UserPostData = {
+		name: 'Nojus',
+		job: 'nori buti programuotojas',
+	};
+
+	const postSagaData = (data: UserPostData) => {
+		dispatch(postUserDataAction(data));
+	};
+
 	return (
 		<SectionWrapper backgroundColor='primary' minHeight='100vh'>
 			<Box>
@@ -79,9 +88,9 @@ const MiddleWare: React.FC = () => {
 					Middleware paskaita
 				</Typography>
 
-				{/* <DefaultButton onClick={() => handlePostButton(student)}>
+				<DefaultButton onClick={() => postSagaData(userToPost)}>
 					Add user to api
-				</DefaultButton> */}
+				</DefaultButton>
 			</Box>
 		</SectionWrapper>
 	);

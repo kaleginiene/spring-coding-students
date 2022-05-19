@@ -37,6 +37,9 @@ const userSlice = createSlice({
 		setUsers: (state, actions: PayloadAction<UserState['users']>) => {
 			state.users = actions.payload;
 		},
+		setStatus: (state, actions: PayloadAction<UserState['status']>) => {
+			state.status = actions.payload;
+		},
 	},
 	// extraReducers: (builder) => {
 	// 	builder.addCase(
@@ -60,7 +63,8 @@ const userSlice = createSlice({
 	// },
 });
 
-export const { setUsers, setUserData, setQuizAnswers } = userSlice.actions;
+export const { setStatus, setUsers, setUserData, setQuizAnswers } =
+	userSlice.actions;
 export default userSlice;
 
 //OLD-FASHIONED REDUCER
